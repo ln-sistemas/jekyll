@@ -1,0 +1,37 @@
+---
+layout: default
+---
+
+<div class="home">
+
+  {{ content }}
+
+  <h1 class="page-heading">Blog Weblink</h1>
+  
+  <ul class="post-list">
+    {% for post in site.posts %}
+      <li>
+        {% assign date_format = site.minima.date_format | default: "%-d de %b %Y" %}
+        <span class="post-meta">Publicado por: {{ post.name_author }} em {{ post.date | date: date_format }}</span>
+
+        <h2>
+          <a class="post-link" href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
+        </h2>
+
+        <p>
+        	<img src="{{ post.img_cover }}" alt="Imagem destacada" width="300">
+        </p>
+
+        	{{ post.excerpt }}
+
+         </li>
+
+         <a href="{{ post.url }}" class="pull-right btn btn-info">  Continue lendo..
+         </a>
+         <hr>
+    {% endfor %}
+  </ul>
+
+  <p class="rss-subscribe">Increva-se <a href="{{ "/feed.xml" | relative_url }}">via RSS</a></p>
+
+</div>
